@@ -84,7 +84,7 @@ export default function BlogPage() {
         {/* Blog Card */}
         {blog[0].image && (
           <img
-            src={`/images/${blog[0].image}`}
+            src={`/tmp/${blog[0].image}`}
             alt={blog[0].title}
             className="w-full h-64 object-cover rounded-lg mb-4"
           />
