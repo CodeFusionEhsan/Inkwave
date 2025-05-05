@@ -89,7 +89,7 @@ export default function YourBlogsPage() {
       ) : loading ? (
         <div className="text-center text-lg text-gray-300">Loading your blogs...</div>
       ) : blogs.length === 0 ? (
-        <div className="text-center text-lg text-gray-300">You haven't uploaded any blogs yet.</div>
+        <div className="text-center text-lg text-gray-300">You haven&apos;t uploaded any blogs yet.</div>
       ) : (
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {blogs.filter(checkBlogs).map((blog) => (
