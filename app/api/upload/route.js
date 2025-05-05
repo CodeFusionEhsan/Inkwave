@@ -26,7 +26,7 @@ export async function POST(req, Response) {
       const buffer = Buffer.from(await file.arrayBuffer())
       const filename = Date.now() + file.name.replaceAll(" ", "_")
       await writeFile(path.join(process.cwd(), "public/images/"+ filename), buffer)
-      await mongoose.connect("mongodb+srv://ehsan:ehsan2024@cluster0.vqrb8yl.mongodb.net/Inkwave?retryWrites=true&w=majority&appName=Cluster0")
+      await mongoose.connect(process.env.MONGO_URI)
       console.log("Connected to database")
 
       const newupload = new blogModel({
