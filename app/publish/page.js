@@ -2,6 +2,14 @@
 
 import { useState } from 'react';
 import { useAuth } from '@clerk/nextjs';
+import {
+    ClerkProvider,
+    SignInButton,
+    SignUpButton,
+    SignedIn,
+    SignedOut,
+    UserButton,
+  } from '@clerk/nextjs'
 
 export default function PublishPage() {
     const [previewImage, setPreviewImage] = useState(null);
