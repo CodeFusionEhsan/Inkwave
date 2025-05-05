@@ -76,9 +76,12 @@ export default function Navbar() {
               </li>
             ))}
             <li>
-              <button className="w-full px-4 py-2 rounded bg-indigo-600 text-white hover:bg-indigo-500 font-semibold transition-colors mt-2">
-                Login
-              </button>
+                <SignedOut>
+            <SignInButton className="w-full px-4 py-2 rounded bg-indigo-600 text-white hover:bg-indigo-500 font-semibold transition-colors mt-2" />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
             </li>
           </ul>
         </div>
