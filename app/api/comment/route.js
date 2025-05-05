@@ -9,7 +9,7 @@ export async function POST(req) {
     const id = formData.get("blogId")
 
     if (by && comment && id) {
-        await mongoose.connect("mongodb+srv://ehsan:ehsan2024@cluster0.vqrb8yl.mongodb.net/Inkwave?retryWrites=true&w=majority&appName=Cluster0")
+        await mongoose.connect(process.env.MONGO_URI)
               console.log("Connected to database")
         const newcomment = {
             by: by,
