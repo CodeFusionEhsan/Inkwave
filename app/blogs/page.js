@@ -39,7 +39,7 @@ export default function BlogsPage() {
             >
               {blog.image && (
                 <img
-                  src={`/images/${blog.image}`}
+                  src={`/tmp/${blog.image}`}
                   alt={blog.title}
                   className="w-full h-48 object-cover"
                 />
