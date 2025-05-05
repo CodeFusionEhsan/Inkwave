@@ -38,7 +38,7 @@ export default function YourBlogsPage() {
       }
     }
     fetchBlogs();
-  }, []);
+  }, [UuserId]);
 
   const handleDelete = async (id) => {
     const formData = new FormData()
