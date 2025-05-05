@@ -25,7 +25,7 @@ export async function POST(req, Response) {
     if (author && title && content && excerpt) {
       const buffer = Buffer.from(await file.arrayBuffer())
       const filename = Date.now() + file.name.replaceAll(" ", "_")
-      await writeFile(path.join(process.cwd(), "public/images/"+ filename), buffer)
+      await writeFile(path.join(process.cwd(), "public/tmp/"+ filename), buffer)
       await mongoose.connect(process.env.MONGO_URI)
       console.log("Connected to database")
 
