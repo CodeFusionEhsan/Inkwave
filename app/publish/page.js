@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useAuth } from '@clerk/nextjs';
+import { CldUploadWidget } from 'next-cloudinary';
 import {
     ClerkProvider,
     SignInButton,
@@ -23,6 +24,8 @@ export default function PublishPage() {
     const [sources, setSources] = useState("")  
     const[error, setError] = useState("")
 
+    const[resource, setResource] = useState("")
+
     const { isLoaded, isSignedIn, userId, sessionId, getToken } = useAuth()
 
   const handleImageChange = (e) => {
@@ -38,7 +41,7 @@ export default function PublishPage() {
     formData.append("title", title)
     formData.append("excerpt", excerpt)
     formData.append("content", content)
-    formData.append("image", image)
+    formData.append("image", resource)
     formData.append("reading", reading)
     formData.append("patreon", patreon)
     formData.append("tags", tags)
@@ -128,27 +131,26 @@ export default function PublishPage() {
 
           {/* Preview Image */}
           <div>
-            <label
-              className="block text-white font-semibold mb-1"
-              htmlFor="previewImage"
-            >
-              Preview Image
-            </label>
-            <input
-              type="file"
-              id="previewImage"
-              name="previewImage"
-              accept="image/*"
-              className="block w-full text-white file:bg-indigo-600 file:text-white file:rounded file:px-4 file:py-2 file:border-0 file:mr-4"
-              onChange={handleImageChange}
-            />
-            {previewImage && (
-              <img
-                src={previewImage}
-                alt="Preview"
-                className="mt-3 rounded-lg border border-gray-700 object-cover max-h-48 w-full"
-              />
-            )}
+            <CldUploadWidget
+        uploadPreset="ajiy2qfo"
+        onSuccess={(result, { widget }) => {
+          setResource(result?.info.public_id);
+          console.log(resource)
+          widget.close();
+        }}
+      >
+        {({ open }) => {
+          function handleOnClick() {
+            setResource(undefined);
+            open();
+          }
+          return (
+            <button className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded transition-colors" onClick={handleOnClick}>
+              Upload an Image
+            </button>
+          );
+        }}
+      </CldUploadWidget>
           </div>
 
           {/* Content */}
