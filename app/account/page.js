@@ -11,6 +11,7 @@ import {
     SignedOut,
     UserButton,
   } from '@clerk/nextjs'
+import { CldImage } from 'next-cloudinary';
 
 export default function YourBlogsPage() {
   const [blogs, setBlogs] = useState([]);
@@ -98,11 +99,14 @@ export default function YourBlogsPage() {
               className="bg-gray-800 rounded-xl shadow-lg flex flex-col overflow-hidden transition-transform hover:-translate-y-1 hover:shadow-2xl"
             >
               {blog.image && (
-                <img
-                  src={`/tmp/${blog.image}`}
-                  alt={blog.title}
-                  className="w-full h-48 object-cover"
-                />
+                <CldImage
+                width="350"
+                className="w-full h-48 object-cover"
+                height="300"
+                src={blog.image}
+                sizes="100vw"
+                alt="Description of my image"
+               />
               )}
               <div className="flex flex-col flex-1 p-6">
                 <h2 className="text-2xl font-bold text-white mb-2">{blog.title}</h2>
