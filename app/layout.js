@@ -11,6 +11,7 @@ import {
   SignedOut,
   UserButton,
 } from '@clerk/nextjs'
+import Script from 'next/script'
 
 export const metadata = {
   title: "Inkwave",
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
         <body
           className={`antialiased`}
         >
+          <Script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript" />
           <Navbar />
           {children}
           <Footer />
