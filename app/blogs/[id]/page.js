@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation'; // If using App Router
 import Link from 'next/link';
 import { useAuth } from '@clerk/nextjs';
+import { CldImage } from 'next-cloudinary';
 
 export default function BlogPage() {
   const params = useParams();
@@ -83,11 +84,14 @@ export default function BlogPage() {
       <div className="w-full max-w-3xl bg-gray-800 rounded-xl shadow-2xl p-6 md:p-10 space-y-8">
         {/* Blog Card */}
         {blog[0].image && (
-          <img
-            src={`/tmp/${blog[0].image}`}
-            alt={blog[0].title}
-            className="w-full h-64 object-cover rounded-lg mb-4"
-          />
+          <CldImage
+                width="350"
+                className="w-full h-48 object-cover"
+                height="300"
+                src={blog.image}
+                sizes="100vw"
+                alt="Description of my image"
+               />
         )}
         <div className="flex flex-col gap-2">
           <h1 className="text-3xl font-bold text-indigo-400">{blog[0].title}</h1>
